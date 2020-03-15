@@ -7,6 +7,12 @@ body, html {
 	box-sizing: border-box;
 }
 
+/* @media print {
+	* {
+		display: none;
+	}
+} */
+
 p, h1, h2, h3, h4 {
 	margin-block-start:0;
 	margin-block-end:0;
@@ -20,16 +26,13 @@ p, h1, h2, h3, h4 {
 
 header {
 	opacity: 0;
-	position: absolute;
+	position: fixed;
 	z-index: 4;
 	transition: 0.5s all;
 }
 
 header input {
 	display: block;
-}
-
-input {
 	margin: 2vw;
 }
 
@@ -55,25 +58,107 @@ section {
 
 section img {
 	position: relative;
-	height: 100vw;
-	width: 100vh;
-	transform: rotate(90deg);
+	height: 100vh;
+	width: 100vw;
+	/* transform: rotate(90deg); */
 	z-index: 1;
 }
 
 section p {
 	position: absolute;
 	width: 20vh;
-	transform: rotate(90deg);
+	/* transform: rotate(90deg); */
+	background-color: white;
 }
 
-section p.name {
-	top: 50%;
+.page1 p.broj-zapisnika {
+	top: 15%;
+	left: 23.3%;
+	width:15vw;
+}
+
+.page1 p.datum-izdavanja {
+	top: 15%;
+	right:2.8%;
+	width:12vw;
+}
+
+.page1 p.zahtev-broj {
+	top: 30%;
+	left: 32%;
+}
+
+.page1 p.datum-zahteva {
+	top: 30%;
 	right: 16%;
+	width:8vw;
 }
 
-section p.code {
-	top: 50%;
-	left: 28%;
+.page1 p.datum-posete {
+	top: 32%;
+	right: 16%;
+	width:8vw;
+}
+
+/* page2 */
+
+.page2 p.datum-posete {
+	top: 29.2%;
+	left:24vw;
+	width:9vw;
+}
+
+.page2 p.ventil-broj {
+	top: 48.2%;
+	left:33vw;
+	width:7vw;
+}
+
+.page2 p.datum-ventila {
+	top: 48.2%;
+	left:47vw;
+	width:9vw;
+}
+
+.page3 p.datum-posete {
+	top: 30%;
+	left: 17%;
+	width:8vw;
+}
+
+.page4 p.revizioni-broj {
+	top: 7%;
+	right: 8%;
+	width:18vw;
+}
+
+.page4 p.datum-posete {
+	top:60.5%;
+	right: 12%;
+	width:18vw;
+}
+
+.page4 p.datum-izdavanja {
+	top: 15%;
+	right:2.8%;
+	width:12vw;
+}
+
+.page4 p.zahtev-broj {
+	top: 72.5%;
+	left: 19.5%;
+}
+
+
+.page4 p.broj-zapisnika {
+	top: 75%;
+	left:21.5vw;
+	width:25vw;
+}
+
+.page4 p.datum-zahteva {
+	top: 75%;
+	right: 16%;
+	width:12vw;
 }
 
