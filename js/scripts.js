@@ -3,6 +3,11 @@ const zahtevBroj = document.querySelector('input[name="zahtev-broj"]');
 const datumZahteva = document.querySelector('input[name="datum-zahteva"]');
 const datumPosete = document.querySelector('input[name="datum-posete"]');
 const revizioniBroj = document.querySelector('input[name="revizioni-broj"]');
+const printButton = document.querySelector('button');
+
+printButton.onclick = function() {
+    window.print();
+}
 
 nameInput.addEventListener("keyup", changeName);
 function changeName(e) {

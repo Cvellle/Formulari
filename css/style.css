@@ -28,8 +28,21 @@ header {
 
 }
 
-input:active, input:focus {
-	border: 0;
+button {
+	position: fixed;
+	height: 4vw;
+	width: 10vw;
+	background-color: cornflowerblue;
+	border-radius: 1.8vw;
+	left:2vw;
+	bottom:23%;
+	color:white;
+	font-size:1.2vw;
+	font-weight: 700;
+	cursor: pointer;
+}
+
+input:active, input:focus, button:focus {
 	outline: 0;
 }
 
