@@ -1,0 +1,79 @@
+body, html {
+	overflow-x: hidden;
+	margin: 0;
+}  
+
+* {
+	box-sizing: border-box;
+}
+
+p, h1, h2, h3, h4 {
+	margin-block-start:0;
+	margin-block-end:0;
+	margin-inline-start:0;
+	margin-inline-end:0;
+	padding-block-start:0;
+	padding-block-end:0;
+	padding-inline-start:0;
+	padding-inline-end:0;
+}
+
+header {
+	opacity: 0;
+	position: absolute;
+	z-index: 4;
+	transition: 0.5s all;
+}
+
+header input {
+	display: block;
+}
+
+input {
+	margin: 2vw;
+}
+
+header:hover {
+	opacity: 1;
+	transition: 0.5s all;
+}
+
+section>div {
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+	min-width: 100vw;
+	z-index: 0;
+}
+
+section {
+	position: relative;
+	display: flex;
+}
+
+section img {
+	position: relative;
+	height: 100vw;
+	width: 100vh;
+	transform: rotate(90deg);
+	z-index: 1;
+}
+
+section p {
+	position: absolute;
+	width: 20vh;
+	transform: rotate(90deg);
+}
+
+section p.name {
+	top: 50%;
+	right: 16%;
+}
+
+section p.code {
+	top: 50%;
+	left: 28%;
+}
+
