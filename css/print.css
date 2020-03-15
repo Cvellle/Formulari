@@ -20,46 +20,16 @@ p, h1, h2, h3, h4 {
 }
 
 header {
-    background: rgba(0, 0, 0, 0.877);
-	position: fixed;
-	z-index: 4;
-	transition: 0.5s all;
-	border-radius: 0 0 2vw 0;
-
+    display: none;
 }
-
-input:active, input:focus {
-	border: 0;
-	outline: 0;
-}
-
-p {
-	color: red;
-	font-size: 0.7vw;
-	margin-left: 0vw;
-	padding-left: 0.2vw;
-	letter-spacing: 0.2vw;
-	font-weight: bold;
-}
-
 
 header input {
 	display: block;
 	margin: 2vw;
-	height: 3vw;
-	width: 15vw;
-	font-size: 1.3vw;
-	padding-left: 1vw;
-	border-radius: 1.1vw;
-	border: none;
-	color: rgba(0, 0, 0, 0.918);
-	letter-spacing: 0.1vw;
 }
-
 
 header:hover {
 	opacity: 1;
-	background: rgb(23, 2, 43);
 	transition: 0.5s all;
 }
 
@@ -74,10 +44,8 @@ section>div {
 }
 
 section {
-	margin-top: 23vh;
 	position: relative;
 	display: flex;
-	transform: scale(0.6, 1.5);
 }
 
 section img {
@@ -103,7 +71,7 @@ section p {
 
 .page1 p.datum-izdavanja {
 	top: 15.3%;
-	right:3%;
+	right:3.5%;
     width:11.5vw;
     height:1.4vh;
     border: none;
@@ -122,7 +90,7 @@ section p {
     right: 16%;
     height:1.4vh;
     border: none;
-	width:7vw;
+	width:9vw;
 }
 
 .page1 p.datum-posete {
@@ -130,7 +98,7 @@ section p {
     right: 16%;
     height:1.30vh;
     border: none;
-	width:7vw;
+	width:9vw;
 }
 
 /* page2 */
@@ -142,19 +110,19 @@ section p {
 }
 
 .page2 p.ventil-broj {
-	top: 48.7%;
-	left:34vw;
+	top: 48.2%;
+	left:33vw;
 	width:7vw;
 }
 
 .page2 p.datum-ventila {
-	top: 48.7%;
-	left:48vw;
+	top: 48.2%;
+	left:47vw;
 	width:9vw;
 }
 
 .page3 p.datum-posete {
-	top: 30.4%;
+	top: 31%;
 	left: 17%;
 	width:8vw;
 }
@@ -166,8 +134,8 @@ section p {
 }
 
 .page4 p.datum-posete {
-	top:60.9%;
-	right: 11%;
+	top:61%;
+	right: 12.4%;
 	width:18vw;
 }
 
@@ -190,7 +158,7 @@ section p {
 }
 
 .page4 p.datum-zahteva {
-	top: 75.3%;
+	top: 75.5%;
 	right: 15%;
 	width:13vw;
 }
