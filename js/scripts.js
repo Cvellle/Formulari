@@ -4,7 +4,7 @@ const datumZahteva = document.querySelector('input[name="datum-zahteva"]');
 const datumPosete = document.querySelector('input[name="datum-posete"]');
 const revizioniBroj = document.querySelector('input[name="revizioni-broj"]');
 
-nameInput.addEventListener("keypress", changeName);
+nameInput.addEventListener("keyup", changeName);
 function changeName(e) {
     var els = document.querySelectorAll(".broj-zapisnika");
     [].forEach.call(els, function(el) {
@@ -16,28 +16,28 @@ function changeName(e) {
     // els.forEach(el =>  el.innerHTML = e.target.value);
 }
 
-zahtevBroj.onkeypress = function(e) {
+zahtevBroj.onkeyup = function(e) {
     var els = document.querySelectorAll(".zahtev-broj");
     [].forEach.call(els, function(el) {
         el.innerHTML = e.target.value;
     });
 }
 
-datumZahteva.onkeypress = function(e) {
+datumZahteva.onkeyup = function(e) {
     var els = document.querySelectorAll(".datum-zahteva");
     [].forEach.call(els, function(el) {
         el.innerHTML = e.target.value;
     });
 }
 
-datumPosete.onkeypress = function(e) {
+datumPosete.onkeyup = function(e) {
     var els = document.querySelectorAll(".datum-posete");
     [].forEach.call(els, function(el) {
         el.innerHTML = e.target.value;
     });
 }
 
-revizioniBroj.onkeypress = function(e) {
+revizioniBroj.onkeyup = function(e) {
     var el = document.querySelector(".revizioni-broj");
      el.innerHTML = e.target.value;
 }
