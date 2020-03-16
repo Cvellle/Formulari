@@ -25,6 +25,7 @@ header {
 	z-index: 4;
 	transition: 0.5s all;
 	border-radius: 0 0 2vw 0;
+	overflow: auto;
 
 }
 
@@ -35,7 +36,7 @@ button {
 	background-color: cornflowerblue;
 	border-radius: 1.8vw;
 	left:2vw;
-	bottom:23%;
+	top:70vh;
 	color:white;
 	font-size:1.2vw;
 	font-weight: 700;
@@ -59,7 +60,7 @@ p {
 header input {
 	display: block;
 	margin: 2vw;
-	height: 3vw;
+	height: 6vh;
 	width: 15vw;
 	font-size: 1.3vw;
 	padding-left: 1vw;
@@ -97,14 +98,12 @@ section img {
 	position: relative;
 	height: 100vh;
 	width: 100vw;
-	/* transform: rotate(90deg); */
 	z-index: 1;
 }
 
 section p {
 	position: absolute;
 	width: 20vh;
-	/* transform: rotate(90deg); */
 	background-color: white;
 }
 
@@ -208,3 +207,8 @@ section p {
 	width:13vw;
 }
 
+@media print {
+	* {
+		
+	}
+}

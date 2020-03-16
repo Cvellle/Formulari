@@ -1,51 +1,78 @@
-const nameInput = document.querySelector('input[name="broj-zapisnika"]');
-const zahtevBroj = document.querySelector('input[name="zahtev-broj"]');
-const datumZahteva = document.querySelector('input[name="datum-zahteva"]');
-const datumPosete = document.querySelector('input[name="datum-posete"]');
-const revizioniBroj = document.querySelector('input[name="revizioni-broj"]');
-const printButton = document.querySelector('button');
 
-printButton.onclick = function() {
-    window.print();
-}
+function all() {
 
-nameInput.addEventListener("keyup", changeName);
-function changeName(e) {
-    var els = document.querySelectorAll(".broj-zapisnika");
-    [].forEach.call(els, function(el) {
-        el.innerHTML = e.target.value;
+    // INPUT VALUES
+    "keyup change".split(" ").forEach(evt => {
+        const headerInputs = document.querySelectorAll("header>input");
+        headerInputs.forEach(
+            inputElement => inputElement.addEventListener(evt, function (e) {
+                var sameElements = document.querySelectorAll("." + this.name);
+                sameElements.forEach(textElement => textElement.innerHTML = e.target.value);
+            }, false)
+        )
     });
 
-    // 2 
-    // var els = document.querySelectorAll(".name");
-    // els.forEach(el =>  el.innerHTML = e.target.value);
+    // AUTO SET DATE
+    const datumIzdavanja = document.querySelector(".datum-izdavanja");
+    const date = new Date();
+    datumIzdavanja.innerHTML = `${date.getDate()}. ${date.getMonth() + 1}. ${date.getFullYear()}`;
+
+    // PRINT WINDOW
+    const printButton = document.querySelector('button');
+    printButton.onclick = function() {
+        window.print();
+    }
+
 }
 
-zahtevBroj.onkeyup = function(e) {
-    var els = document.querySelectorAll(".zahtev-broj");
-    [].forEach.call(els, function(el) {
-        el.innerHTML = e.target.value;
-    });
-}
+window.addEventListener("load", all);
 
-datumZahteva.onkeyup = function(e) {
-    var els = document.querySelectorAll(".datum-zahteva");
-    [].forEach.call(els, function(el) {
-        el.innerHTML = e.target.value;
-    });
-}
 
-datumPosete.onkeyup = function(e) {
-    var els = document.querySelectorAll(".datum-posete");
-    [].forEach.call(els, function(el) {
-        el.innerHTML = e.target.value;
-    });
-}
 
-revizioniBroj.onkeyup = function(e) {
-    var el = document.querySelector(".revizioni-broj");
-     el.innerHTML = e.target.value;
-}
 
-document.querySelector(".datum-izdavanja").innerHTML = `${new Date().getDate()}. ${new Date().getMonth() + 1}. ${new Date().getFullYear()}`;
+
+
+
+
+// const nameInput = document.querySelector('input[name="broj-zapisnika"]');
+// const zahtevBroj = document.querySelector('input[name="zahtev-broj"]');
+// const datumZahteva = document.querySelector('input[name="datum-zahteva"]');
+// const datumPosete = document.querySelector('input[name="datum-posete"]');
+// const revizioniBroj = document.querySelector('input[name="revizioni-broj"]');
+// const printButton = document.querySelector('button');
+
+// printButton.onclick = function() {
+//     window.print();
+// }
+
+// // "keyup change".split(" ")
+// //     .map(name => nameInput.addEventListener(name, changeName, false));
+
+// nameInput.addEventListener("keyup", changeName);
+// function changeName(e) {
+//     var els = document.querySelectorAll(".broj-zapisnika");
+//     [].forEach.call(els, function(el) {
+//         el.innerHTML = e.target.value;
+//     });
+
+//     // 2 
+//     // var els = document.querySelectorAll(".name");
+//     // els.forEach(el =>  el.innerHTML = e.target.value);
+// }
+
+// ['keyup', 'change'].forEach( evt => {
+//     const headerInputs = document.querySelectorAll("header>input");
+//     headerInputs.forEach(
+//         el => el.addEventListener(evt, function (e){
+//             var els = document.querySelectorAll("." + this.name);
+//             els.forEach(el =>  el.innerHTML = e.target.value);
+//     }, false)
+
+//     )
+//     });
+
+
+
+
+
 
