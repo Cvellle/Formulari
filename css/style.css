@@ -47,16 +47,6 @@ input:active, input:focus, button:focus {
 	outline: 0;
 }
 
-p {
-	color: red;
-	font-size: 0.7vw;
-	margin-left: 0vw;
-	padding-left: 0.2vw;
-	letter-spacing: 0.2vw;
-	font-weight: bold;
-}
-
-
 header input {
 	display: block;
 	margin: 2vw;
@@ -77,138 +67,180 @@ header:hover {
 	transition: 0.5s all;
 }
 
+.pages {
+	position: relative;
+	transform: scale(0.6) translateY(-33%);
+	left: 5vw;
+}
+
 section>div {
 	position: relative;
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	height: 100vh;
+	height: auto;
 	min-width: 100vw;
 	z-index: 0;
 }
 
 section {
-	margin-top: 23vh;
+	/* margin-top: 23vh; */
 	position: relative;
 	display: flex;
-	transform: scale(0.6, 1.5);
 }
 
 section img {
 	position: relative;
-	height: 100vh;
+	height: auto;
 	width: 100vw;
 	z-index: 1;
 }
 
 section p {
+	color: red;
 	position: absolute;
 	width: 20vh;
 	background-color: white;
+	font-size: 1vw;
+	display: flex;
+	align-items: center;
+	border: none;
 }
+	
 
 .page1 p.broj-zapisnika {
 	top: 15.2%;
-	left: 23.3%;
+	left: 23.1%;
+	height:2.5vw;
 	width:15vw;
+	border: none;
+	font-size: 1.3vw;	
 }
 
 .page1 p.datum-izdavanja {
 	top: 15.3%;
-	right:3%;
-    width:11.5vw;
-    height:1.4vh;
-    border: none;
+	right:4vw;
+    width:11.5%;
+    height:1.5%;
+	font-size: 1.3vw;
 }
 
 .page1 p.zahtev-broj {
 	top: 29.8%;
     left: 32%;
     width:12vw;
-    height:1.4vh;
-    border: none;
+	height:1.9vw;
+	font-size: 1.3vw;
 }
 
 .page1 p.datum-zahteva {
 	top: 29.8%;
-    right: 16%;
-    height:1.4vh;
-    border: none;
-	width:7vw;
+	left: 75vw;
+	padding-left: 0.4vw;
+	height:1.9vw;
+	width:8%;
+	font-size: 1.3vw;
 }
 
 .page1 p.datum-posete {
 	top: 31.5%;
-    right: 16%;
-    height:1.30vh;
-    border: none;
-	width:7vw;
+	left: 75vw;
+	padding-left: 0.4vw;
+    height:1.9vw;
+	width:8vw;
+	font-size: 1.3vw;
 }
 
 /* page2 */
 
 .page2 p.datum-posete {
-	top: 29.2%;
-	left:24vw;
-	width:9vw;
+	top: 29.7%;
+	left:25vw;
+	height:1.9vw;
+	width:8vw;
+	font-size: 1.4vw;
 }
 
 .page2 p.ventil-broj {
 	top: 48.7%;
 	left:34vw;
 	width:7vw;
+	height:1.9vw;
+	font-size: 1.3vw;
 }
 
 .page2 p.datum-ventila {
 	top: 48.7%;
 	left:48vw;
 	width:9vw;
+	height:1.9vw;
+	font-size: 1.3vw;
 }
 
 .page3 p.datum-posete {
-	top: 30.4%;
+	top: 30.6%;
 	left: 17%;
 	width:8vw;
+	height:2.3vw;
+	font-size: 1.6vw;
 }
 
 .page4 p.revizioni-broj {
-	top: 7%;
+	top: 7.1%;
 	right: 8%;
 	width:18vw;
+	height:2.3vw;
+	font-size: 2.2vw;
 }
 
 .page4 p.datum-posete {
 	top:60.9%;
 	right: 11%;
 	width:18vw;
+	height:2.3vw;
+	font-size: 2.2vw;
 }
 
 .page4 p.datum-izdavanja {
 	top: 15%;
 	right:2.8%;
 	width:12vw;
+	height:2.3vw;
+	font-size: 2.2vw;
 }
 
 .page4 p.zahtev-broj {
 	top: 73%;
 	left: 19.5%;
+	height:2.3vw;
+	font-size: 1.6vw;
 }
 
 
 .page4 p.broj-zapisnika {
-	top: 75.2%;
+	top: 75.4%;
 	left:21.5vw;
 	width:25vw;
+	height:2.3vw;
+	font-size: 1.6vw;
 }
 
 .page4 p.datum-zahteva {
-	top: 75.3%;
+	top: 74.7%;
 	right: 15%;
 	width:13vw;
+	height:2.5vw;
+	font-size: 2.2vw;
 }
 
 @media print {
-	* {
-		
+
+	header, button {
+		display: none;
 	}
+	.pages {
+		transform: scale(1);
+		left: 0;
+	}
+
 }

@@ -19,6 +19,10 @@ p, h1, h2, h3, h4 {
 	padding-inline-end:0;
 }
 
+.pages {
+
+}
+
 header {
     display: none;
 }
