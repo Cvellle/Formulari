@@ -1,13 +1,3 @@
-// SAVE TO LOCAL STORAGE
-const saveToLocalStorage = function () {
-    const divs = document.querySelectorAll(".draggableDiv");
-
-    divs.forEach(
-        inputElement => inputElement.addEventListener("mouseup", function (e) {
-            localStorage.setItem('myListItems3', document.body.innerHTML);
-        }, false)
-    )
-}
 
 //DRAG ONLOAD
 const dragg = function () {
@@ -26,8 +16,11 @@ const deleteSelf = function () {
 
     function allowDel() {
         deleteDiv.forEach(
-            el => el.addEventListener("click", function () {
-                setTimeout(() => { this.parentNode.parentNode.innerHTML = `<div style="display:none;">d</div>`; saveToLocalStorage()}, 0);
+            el => el.addEventListener("click", function() {
+                this.parentNode.parentNode.innerHTML = `<div style="display:none;"></div>`;
+                setTimeout(() => {
+                    localStorage.setItem('myListItems3', document.body.innerHTML);
+                }, 100);
             }, false)
         )
     }
@@ -35,7 +28,6 @@ const deleteSelf = function () {
 
 //  INPUT VALUES
 const changeInputs = function () {
-
     "keyup change".split(" ").forEach(evt => {
         const newInputs = document.querySelectorAll(".newInput + input");
         const nameInputs = document.querySelectorAll(".areaName + input");
@@ -82,17 +74,16 @@ function all() {
     const appendInupt = function (e) {
         e.target.nextElementSibling.innerHTML += `
         <div>
-        <div class="draggableDiv" >
-                    <input type="range"/>
-                    <textarea class="newInput" readonly="true"></textarea>
-                    <input placeholder="type text" type="text"/>
-                    <div class="areaName"></div>
-                    <input placeholder="input name" type="text"/>
-                    <button style="height:20px; width:20px;">x</button>
-                </div>
+            <div class="draggableDiv">
+                <input type="range"/>
+                <textarea class="newInput" readonly="true"></textarea>
+                <input placeholder="type text" type="text"/>
+                <div class="areaName"></div>
+                <input placeholder="input name" type="text"/>
+                <button style="height:20px; width:20px;">x</button>
+            </div>
         </div>
-                
-            `;
+        `;
 
         const newInputsList = document.querySelector(".myList");
         localStorage.setItem('myListItems3', document.body.innerHTML);
@@ -120,11 +111,26 @@ function loadFile(event) {
     output.style.backgroundImage = "url(" + URL.createObjectURL(event.target.files[0]) + ")";
 };
 
-// GET LOCAL STORAGE
-var saved = localStorage.getItem('myListItems3');
-if (saved) {
-    document.body.innerHTML = saved;
+// SAVE TO LOCAL STORAGE
+function saveToLocalStorage() {
+    const divs = document.querySelectorAll(".draggableDiv");
+
+    divs.forEach(
+        inputElement => inputElement.addEventListener("mouseup", function (e) {
+            localStorage.setItem('myListItems3', document.body.innerHTML);
+        }, false)
+    )
 }
+
+// GET LOCAL STORAGE
+function getLocalStorage() {
+    var saved = localStorage.getItem('myListItems3');
+    if (saved) {
+        document.body.innerHTML = localStorage.getItem('myListItems3');;
+    }
+}
+
+getLocalStorage();
 
 // CLEAR LOCAL STORAGE
 const clearLs = document.querySelector("#deleteLs");
@@ -133,19 +139,20 @@ clearLs.onclick = function () {
     location.reload();
 }
 
-window.addEventListener("load", all);
-
 dragg();
 changeInputs();
 deleteSelf();
 saveToLocalStorage();
 
-const drD = document.querySelectorAll(".myList>div");
-drD.forEach(
-    inputElement => inputElement.addEventListener("load", function (e) {
-        alert("a");
-    }, false)
-)
+window.addEventListener("load", all);
+
+
+// const drD = document.querySelectorAll(".myList");
+// drD.forEach(
+//     inputElement => inputElement.addEventListener("DOMNodeInserted", function (e) {
+//         alert("a");
+//     }, false)
+// )
 
 // if (window.styleMedia.type == "screen") {
 // }
