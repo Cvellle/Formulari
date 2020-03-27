@@ -180,6 +180,10 @@ if (saved) {
 
 });
 
+// document.querySelector("#deleteLs").onclick = function() {
+//     // localStorage.clear();
+// }
+
 //DRAG ONLOAD
 $(function () {
     $(".newInput").parent().draggable();
