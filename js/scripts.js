@@ -1,5 +1,16 @@
+// SAVE TO LOCAL STORAGE
+const saveToLocalStorage = function () {
+    const divs = document.querySelectorAll(".draggableDiv");
+
+    divs.forEach(
+        inputElement => inputElement.addEventListener("mouseup", function (e) {
+            localStorage.setItem('myListItems3', document.body.innerHTML);
+        }, false)
+    )
+}
+
 //DRAG ONLOAD
-const dragg = function() {
+const dragg = function () {
     $(".newInput").parent().draggable();
 }
 
@@ -15,22 +26,11 @@ const deleteSelf = function () {
 
     function allowDel() {
         deleteDiv.forEach(
-            el => el.addEventListener("click", function (e) {
-                this.parentElement.style.display = "none";
+            el => el.addEventListener("click", function () {
+                setTimeout(() => { this.parentNode.parentNode.innerHTML = `<div style="display:none;">d</div>`; saveToLocalStorage()}, 0);
             }, false)
         )
     }
-}
-
-// SAVE TO LOCAL STORAGE
-const saveToLocalStorage = function () {
-    const divs = document.querySelectorAll(".draggableDiv");
-
-    divs.forEach(
-        inputElement => inputElement.addEventListener("mouseup", function (e) {
-            localStorage.setItem('myListItems3', document.body.innerHTML);
-        }, false)
-    )
 }
 
 //  INPUT VALUES
@@ -81,7 +81,8 @@ function all() {
     // APPEND NEW ELEMENT
     const appendInupt = function (e) {
         e.target.nextElementSibling.innerHTML += `
-                <div class="draggableDiv" >
+        <div>
+        <div class="draggableDiv" >
                     <input type="range"/>
                     <textarea class="newInput" readonly="true"></textarea>
                     <input placeholder="type text" type="text"/>
@@ -89,6 +90,8 @@ function all() {
                     <input placeholder="input name" type="text"/>
                     <button style="height:20px; width:20px;">x</button>
                 </div>
+        </div>
+                
             `;
 
         const newInputsList = document.querySelector(".myList");
