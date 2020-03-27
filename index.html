@@ -9,6 +9,8 @@
 	<link rel="stylesheet" href="css/style.css" media="screen" />
 	<link rel="stylesheet" media="print" href="css/style.css" />
 	<link href='https://fonts.googleapis.com/css?family=Roboto:300,400,700' rel='stylesheet' type='text/css'>
+	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 </head>
 
 <body>
@@ -23,47 +25,49 @@
 		<input type="text" name="revizioni-broj" placeholder="Revizioni broj">
 	</header>
 
-	<button id="#printButton">
+	<button id="printButton">
 		Print
 	</button>
-	
-	<div class="pages">
+
+	<ul class="mainList">
+
+	</ul>
+
+	<div class="pages" id="pages">
 		<section class="page1">
-			<div>
-				<img src="images/Formular-1.png" alt="">
-			</div>
-			<p class="broj-zapisnika"></p>
-			<p class="datum-izdavanja"></p>
-			<p class="zahtev-broj"></p>
-			<p class="datum-zahteva"></p>
-			<p class="datum-posete"></p>
+			<button class="addInputs">
+				Add inputs
+			</button>
+			<ul class="myList">
+			</ul>
+			<input type="file" class="fileInp" accept="image/*">
 		</section>
 	
 		<section class="page2">
-			<div>
-				<img src="images/Formular-2.png" alt="">
-			</div>
-			<p class="datum-posete"></p>
-			<p class="ventil-broj"></p>
-			<p class="datum-ventila"></p>
+			<button class="addInputs">
+				Add inputs
+			</button>
+			<ul class="myList">
+			</ul>
+			<input type="file" class="fileInp" accept="image/*">		
 		</section>
 	
 		<section class="page3">
-			<div>
-				<img src="images/Formular-3.png" alt="">
-			</div>
-			<p class="datum-posete"></p>
+			<button class="addInputs">
+				Add inputs
+			</button>
+			<ul class="myList">
+			</ul>
+			<input type="file" class="fileInp" accept="image/*">
 		</section>
 	
 		<section class="page4">
-			<div>
-				<img src="images/F2.png" alt="">
-			</div>
-			<p class="revizioni-broj"></p>
-			<p class="datum-posete"></p>
-			<p class="zahtev-broj"></p>
-			<p class="broj-zapisnika"></p>
-			<p class="datum-zahteva"></p>
+			<button class="addInputs">
+				Add inputs
+			</button>
+			<ul class="myList">
+			</ul>
+			<input type="file" class="fileInp" accept="image/*">
 		</section>
 	</div>
 
