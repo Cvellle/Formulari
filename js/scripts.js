@@ -1,4 +1,7 @@
-
+const addingLlists = document.querySelectorAll(".myList");
+addingLlists.forEach(element =>  element.style.height = document.body.scrollHeight + "px");
+// forEach(e => e.style.color = "white");
+// document.body.scrollHeight
 //DRAG ONLOAD
 const dragg = function () {
     $(".newInput").parent().draggable();
@@ -24,6 +27,17 @@ const deleteSelf = function () {
             }, false)
         )
     }
+}
+
+// FIX DIV
+const fixDiv = function () {
+    const spans = document.querySelectorAll('.draggableDiv span');
+
+    spans.forEach(
+            el => el.addEventListener("click", function() {
+                this.parentNode.style.position = "fixed";
+            }, false)
+        )
 }
 
 //  INPUT VALUES
@@ -81,6 +95,7 @@ function all() {
                 <div class="areaName"></div>
                 <input placeholder="input name" type="text"/>
                 <button style="height:20px; width:20px;">x</button>
+                <span>Fix</span>
             </div>
         </div>
         `;
@@ -91,6 +106,7 @@ function all() {
         dragg();
         changeInputs();
         deleteSelf();
+        fixDiv();
         saveToLocalStorage();
 
     }

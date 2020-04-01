@@ -83,7 +83,7 @@ ul {
 	resize: both;
 	z-index: 3;
 	list-style: none;
-	overflow: hidden;
+	overflow-x: hidden;
 	width: 100%;
 	height:1577.79px;
 	max-width:100%;
@@ -131,6 +131,45 @@ input[type="range"] {
 
 .draggableDiv input {
 	max-width:80px;
+	margin-left: 2px;
+}
+
+.draggableDiv button {
+	border: 1px solid black;
+	margin-top: 5px;
+	margin-left: 2px;
+	max-width:80px;
+	cursor: pointer;
+	border-radius: 50%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: white;
+	display: inline-block;
+	transition: 0.3s all;
+}
+
+
+.draggableDiv span {
+	border: 1px solid black;
+	margin-top: 5px;
+	max-width:80px;
+	cursor: pointer;
+	display: inline-block;
+	border-radius: 20%;
+	margin-bottom: 2px;
+	margin-left: 2px;
+	font-size: 80%;
+	padding: 3px;
+	transition: 0.3s all;
+}
+
+.draggableDiv button:hover {
+	background: rgba(255, 0, 0, 0.89);
+}
+
+.draggableDiv span:hover {
+	background: rgba(145, 23, 23, 0.938);
 }
 
 .fileInp {
@@ -138,6 +177,7 @@ input[type="range"] {
 	right:0vw;
 	top:0.3vw;
 	overflow: visible;
+	z-index:3;
 }
 
 ::-webkit-file-upload-button {
@@ -148,6 +188,7 @@ input[type="range"] {
 	width:12vw;
 	border: 0.3vw solid black;
 	cursor: pointer;
+
   }
 
 input:active, input:focus, button:focus {
