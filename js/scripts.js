@@ -36,6 +36,7 @@ const fixDiv = function () {
     spans.forEach(
             el => el.addEventListener("click", function() {
                 this.parentNode.style.position = "fixed";
+                this.parentNode.classList.add("fixed");
             }, false)
         )
 }
@@ -158,6 +159,7 @@ clearLs.onclick = function () {
 dragg();
 changeInputs();
 deleteSelf();
+fixDiv();
 saveToLocalStorage();
 
 window.addEventListener("load", all);

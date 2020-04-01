@@ -309,6 +309,11 @@ section p {
 		resize: none;
 	}
 
+	.fixed {
+		display: none;
+	}
+
+
 	input {
 		display: none;
 	}
