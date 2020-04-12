@@ -138,7 +138,8 @@ function loadFile(event) {
     let file = event.target.value.split("\\");
     let fileName = file[file.length-1];
     localStorage.setItem("newImage1", bgImage); 
-    output.style.backgroundImage = `url('./images/${fileName}')`;
+    // output.style.backgroundImage = `url('./images/${fileName}')`; 
+    output.style.backgroundImage = `url('${bgImage}')`; 
     setTimeout(() => localStorage.setItem('myListItems3', document.body.innerHTML), 100)
 };
     
