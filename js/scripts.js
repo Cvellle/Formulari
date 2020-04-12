@@ -1,7 +1,6 @@
-const addingLlists = document.querySelectorAll(".myList");
-addingLlists.forEach(element =>  element.style.height = document.body.scrollHeight + "px");
-// forEach(e => e.style.color = "white");
-// document.body.scrollHeight
+const addingLlists = document.querySelector(".myList");
+addingLlists.style.height = document.body.scrollHeight + "px";
+
 //DRAG ONLOAD
 const dragg = function () {
     $(".newInput").parent().draggable();
@@ -44,8 +43,7 @@ const fixDiv = function () {
             
             this.parentNode.style.left = (Number(draggableDivLeft.slice(0, draggableDivLeft.length - 2)) + Number(sectionOffsetLeft)) + "px";  
             this.parentNode.style.top = (Number(draggableDivTop.slice(0, draggableDivTop.length - 2)) + Number(sectionOffsetTop)) + "px";  
-            
-            
+                       
             this.parentNode.style.position = "fixed";
             this.parentNode.classList.add("fixed");
         }, false)
@@ -101,7 +99,7 @@ function all() {
         const newInputsList = document.querySelector(".myList")
         newInputsList.innerHTML += `
         <div>
-            <div class="draggableDiv" style="margin-top:${Number(window.pageYOffset) + 100 + "px"}">
+            <div class="draggableDiv" style="margin-top: ${Number(window.pageYOffset) + 100 + "px"}">
                 <input type="range"/>
                 <textarea class="newInput" readonly="true"></textarea>
                 <input placeholder="type text" type="text"/>
@@ -113,11 +111,6 @@ function all() {
         </div>
         `;
         
-        const newDiv = e.target.nextElementSibling.lastElementChild;
-        // newDiv.style.top =  Number(window.pageYOffset) + 100 + "px";
-        // Number((newDiv.style.top).slice(0, newDiv.style.top.length - 2)) + 
-        // alert( Number((newDiv.style.top.slice(0, newDiv.style.top.length - 2))))
-
         localStorage.setItem('myListItems3', document.body.innerHTML);
 
         dragg();
@@ -140,9 +133,15 @@ acceptInput.forEach(element => {
 });
 
 function loadFile(event) {
-    var output = event.target.parentNode;
-    output.style.backgroundImage = "url(" + URL.createObjectURL(event.target.files[0]) + ")";
+    let bgImage = URL.createObjectURL(event.target.files[0]);
+    let output = event.target.parentNode;
+    let file = event.target.value.split("\\");
+    let fileName = file[file.length-1];
+    localStorage.setItem("newImage1", bgImage); 
+    output.style.backgroundImage = `url('./images/${fileName}')`;
+    setTimeout(() => localStorage.setItem('myListItems3', document.body.innerHTML), 100)
 };
+    
 
 // SAVE TO LOCAL STORAGE
 function saveToLocalStorage() {
@@ -150,7 +149,7 @@ function saveToLocalStorage() {
 
     divs.forEach(
         inputElement => inputElement.addEventListener("mouseup", function (e) {
-            setTimeout(()=>localStorage.setItem('myListItems3', document.body.innerHTML), 100)
+            setTimeout(() => localStorage.setItem('myListItems3', document.body.innerHTML), 100)
         }, false)
     )
 }
@@ -178,7 +177,9 @@ deleteSelf();
 fixDiv();
 saveToLocalStorage();
 
+
 window.addEventListener("load", all);
+
 
 
 // const drD = document.querySelectorAll(".myList");
@@ -189,4 +190,5 @@ window.addEventListener("load", all);
 // )
 
 // if (window.styleMedia.type == "screen") {
+
 // }

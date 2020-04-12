@@ -71,6 +71,7 @@ header {
 	font-size: 1.3vw;
 	border-radius: 1.3vw;
 	border:none;
+	z-index: 5;
 }
 
 ul {
