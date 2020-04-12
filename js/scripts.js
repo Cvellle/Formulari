@@ -9,6 +9,7 @@ const dragg = function () {
 
 // DELETE DIV
 const deleteSelf = function () {
+
     const divs = document.querySelectorAll(".draggableDiv");
 
     divs.forEach(element => {
@@ -34,11 +35,21 @@ const fixDiv = function () {
     const spans = document.querySelectorAll('.draggableDiv span');
 
     spans.forEach(
-            el => el.addEventListener("click", function() {
-                this.parentNode.style.position = "fixed";
-                this.parentNode.classList.add("fixed");
-            }, false)
-        )
+        el => el.addEventListener("click", function() {
+            const sectionOffsetLeft = document.querySelector("#pages > section").getBoundingClientRect().left;
+            const sectionOffsetTop = document.querySelector(".myList").getBoundingClientRect().top;
+            
+            const draggableDivLeft = this.parentNode.style.left;
+            const draggableDivTop = this.parentNode.style.top;
+            
+            this.parentNode.style.left = (Number(draggableDivLeft.slice(0, draggableDivLeft.length - 2)) + Number(sectionOffsetLeft)) + "px";  
+            this.parentNode.style.top = (Number(draggableDivTop.slice(0, draggableDivTop.length - 2)) + Number(sectionOffsetTop)) + "px";  
+            
+            
+            this.parentNode.style.position = "fixed";
+            this.parentNode.classList.add("fixed");
+        }, false)
+    )
 }
 
 //  INPUT VALUES
@@ -87,9 +98,10 @@ function all() {
 
     // APPEND NEW ELEMENT
     const appendInupt = function (e) {
-        e.target.nextElementSibling.innerHTML += `
+        const newInputsList = document.querySelector(".myList")
+        newInputsList.innerHTML += `
         <div>
-            <div class="draggableDiv">
+            <div class="draggableDiv" style="margin-top:${Number(window.pageYOffset) + 100 + "px"}">
                 <input type="range"/>
                 <textarea class="newInput" readonly="true"></textarea>
                 <input placeholder="type text" type="text"/>
@@ -100,8 +112,12 @@ function all() {
             </div>
         </div>
         `;
+        
+        const newDiv = e.target.nextElementSibling.lastElementChild;
+        // newDiv.style.top =  Number(window.pageYOffset) + 100 + "px";
+        // Number((newDiv.style.top).slice(0, newDiv.style.top.length - 2)) + 
+        // alert( Number((newDiv.style.top.slice(0, newDiv.style.top.length - 2))))
 
-        const newInputsList = document.querySelector(".myList");
         localStorage.setItem('myListItems3', document.body.innerHTML);
 
         dragg();
@@ -134,7 +150,7 @@ function saveToLocalStorage() {
 
     divs.forEach(
         inputElement => inputElement.addEventListener("mouseup", function (e) {
-            localStorage.setItem('myListItems3', document.body.innerHTML);
+            setTimeout(()=>localStorage.setItem('myListItems3', document.body.innerHTML), 100)
         }, false)
     )
 }

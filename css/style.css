@@ -25,24 +25,22 @@ header {
 	z-index: 4;
 	transition: 0.5s all;
 	border-radius: 0 0 2vw 0;
-	overflow: auto;
 	display: none;
 }
 
 .addInputs {
-	position: absolute;
+	position: fixed;
 	height: 4vw;
 	width: 10vw;
 	background-color: rgb(230, 173, 50);
 	border-radius: 1.8vw;
-	left:2vw;
+	left:7vw;
 	top:1vw;
 	color:white;
 	font-size:1.2vw;
 	font-weight: 700;
 	cursor: pointer;
 	z-index: 4;
-	overflow: auto;
 }
 
 #printButton {
@@ -79,20 +77,18 @@ ul {
 	position: absolute;
 	top:0px;
 	display: block;
-	position: absolute;
 	resize: both;
 	z-index: 3;
 	list-style: none;
 	overflow-x: hidden;
 	width: 100%;
-	height:1577.79px;
-	max-width:100%;
+	max-width: 1119px;
 }
 
 .draggableDiv {
 	position: absolute;
+	top:0;
 	left:0vw;
-	top:100px;
 	border:1px solid black;
 	cursor:grab;
 	min-width: auto;
@@ -121,6 +117,16 @@ ul {
 
 input[type="range"] {
 	width:80px;
+}
+
+.fixed {
+	position: fixed;
+	outline: 3px solid black;
+}
+
+.fixed span {
+	pointer-events: none;
+	opacity: 0.1;
 }
 
 .areaName {
@@ -222,12 +228,13 @@ header:hover {
 	width: 100%;
 	align-items: center;	
 	flex-direction: column;
+	max-width: 100vw;
 }
 
 section {
 	position: relative;
 	resize: both;
-	overflow: hidden;
+	max-width: 1119px;
 }
 
 section>div {
@@ -236,12 +243,14 @@ section>div {
 	height: auto;
 	width: 1119px;
 	z-index: 0;
+	max-width: 1119px;
 }
 
 section img {
 	position: relative;
 	width: 1119px;
 	z-index: 1;
+	max-width:1119px;
 }
 
 section p {
