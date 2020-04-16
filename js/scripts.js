@@ -1,5 +1,5 @@
 const addingLlists = document.querySelector(".myList");
-addingLlists.style.height = document.body.scrollHeight + "px";
+addingLlists.style.height = document.body.clientHeight + "px";
 
 //DRAG ONLOAD
 const dragg = function () {
@@ -19,7 +19,7 @@ const deleteSelf = function () {
 
     function allowDel() {
         deleteDiv.forEach(
-            el => el.addEventListener("click", function() {
+            el => el.addEventListener("click", function () {
                 this.parentNode.parentNode.innerHTML = `<div style="display:none;"></div>`;
                 setTimeout(() => {
                     localStorage.setItem('myListItems3', document.body.innerHTML);
@@ -34,16 +34,16 @@ const fixDiv = function () {
     const spans = document.querySelectorAll('.draggableDiv span');
 
     spans.forEach(
-        el => el.addEventListener("click", function() {
+        el => el.addEventListener("click", function () {
             const sectionOffsetLeft = document.querySelector("#pages > section").getBoundingClientRect().left;
             const sectionOffsetTop = document.querySelector(".myList").getBoundingClientRect().top;
-            
+
             const draggableDivLeft = this.parentNode.style.left;
             const draggableDivTop = this.parentNode.style.top;
-            
-            this.parentNode.style.left = (Number(draggableDivLeft.slice(0, draggableDivLeft.length - 2)) + Number(sectionOffsetLeft)) + "px";  
-            this.parentNode.style.top = (Number(draggableDivTop.slice(0, draggableDivTop.length - 2)) + Number(sectionOffsetTop)) + "px";  
-                       
+
+            this.parentNode.style.left = (Number(draggableDivLeft.slice(0, draggableDivLeft.length - 2)) + Number(sectionOffsetLeft)) + "px";
+            this.parentNode.style.top = (Number(draggableDivTop.slice(0, draggableDivTop.length - 2)) + Number(sectionOffsetTop)) + "px";
+
             this.parentNode.style.position = "fixed";
             this.parentNode.classList.add("fixed");
         }, false)
@@ -110,7 +110,7 @@ function all() {
             </div>
         </div>
         `;
-        
+
         localStorage.setItem('myListItems3', document.body.innerHTML);
 
         dragg();
@@ -136,13 +136,13 @@ function loadFile(event) {
     let bgImage = URL.createObjectURL(event.target.files[0]);
     let output = event.target.parentNode;
     let file = event.target.value.split("\\");
-    let fileName = file[file.length-1];
-    localStorage.setItem("newImage1", bgImage); 
+    let fileName = file[file.length - 1];
+    localStorage.setItem("newImage1", bgImage);
     // output.style.backgroundImage = `url('./images/${fileName}')`; 
-    output.style.backgroundImage = `url('${bgImage}')`; 
+    output.style.backgroundImage = `url('${bgImage}')`;
     setTimeout(() => localStorage.setItem('myListItems3', document.body.innerHTML), 100)
 };
-    
+
 
 // SAVE TO LOCAL STORAGE
 function saveToLocalStorage() {
@@ -172,14 +172,61 @@ clearLs.onclick = function () {
     location.reload();
 }
 
+function addRemoveEvent() {
+    const removeDivBtn = document.querySelectorAll(".removePage");
+    removeDivBtn.forEach(el => el.addEventListener("click", removePrentPage))
+
+    function removePrentPage() {
+        this.parentElement.remove();
+    }
+}
+
+
 dragg();
 changeInputs();
 deleteSelf();
 fixDiv();
 saveToLocalStorage();
-
+addRemoveEvent();
 
 window.addEventListener("load", all);
+
+
+// Jquery
+
+jQuery(document).ready(function ($) {
+
+    $(".fileuploader-btn").on("click", function () {
+        $(".fileuploader").click();
+    });
+
+    $(".fileuploader").change(function (event) {
+        var reader = new FileReader();
+        reader.onload = function (file) {
+            var fileContent = file.target.result;
+
+            $("#pages").append(`
+            <section class="newDiv" style="background:url('${fileContent}')">
+                <button class="removePage">x</button>
+            </section>
+        `);
+
+            addRemoveEvent();
+            addingLlists.style.height = document.body.clientHeight + "px";
+        };
+
+        reader.readAsDataURL(this.files[0]);
+        event.target.value = "";
+
+        setTimeout(() => {
+            localStorage.setItem('myListItems3', document.body.innerHTML);
+        }, 100);
+    });
+});
+
+
+
+
 
 
 
