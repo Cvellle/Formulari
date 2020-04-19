@@ -321,12 +321,12 @@ function addNewProjFun() {
 
     if (this.classList.contains("startFirst")) {
         setTimeout(() => {
-            location.replace(`${urlString}#${this.previousElementSibling.value}`);
+            location.replace(`#${this.previousElementSibling.value}`);
         }, 100);
         // window.close('', '_parent', '')
     } else {
         setTimeout(() => {
-            window.open(`${urlString}#${this.previousElementSibling.value}`);
+            window.open(`#${this.previousElementSibling.value}`);
         }, 100);
     }
 }
