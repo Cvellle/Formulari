@@ -1,6 +1,19 @@
 const addingLlists = document.querySelector(".myList");
-addingLlists.style.height = document.body.clientHeight + "px";
+const constantHeader = document.querySelector(".constantDiv");
+const changeableDiv = document.querySelector(".changeableDiv");
+const projItem = document.querySelector(".projects > *");
+const startFirst = document.querySelector(".startFirst");
 
+let savedLocalSorages = ["myListItems1"];
+let projNames = [];
+current = location.href;
+
+let saved2 = localStorage.getItem("constantHeader");
+if (saved2) {
+    constantHeader.innerHTML = localStorage.getItem("constantHeader");
+}
+
+addingLlists.style.height = changeableDiv.clientHeight + "px";
 //DRAG ONLOAD
 const dragg = function () {
     $(".newInput").parent().draggable();
@@ -22,7 +35,8 @@ const deleteSelf = function () {
             el => el.addEventListener("click", function () {
                 this.parentNode.parentNode.innerHTML = `<div style="display:none;"></div>`;
                 setTimeout(() => {
-                    localStorage.setItem('myListItems3', document.body.innerHTML);
+                    localStorage.setItem(current, changeableDiv.innerHTML);
+                    localStorage.setItem("constantHeader", constantHeader.innerHTML);
                 }, 100);
             }, false)
         )
@@ -111,7 +125,7 @@ function all() {
         </div>
         `;
 
-        localStorage.setItem('myListItems3', document.body.innerHTML);
+        localStorage.setItem(current, changeableDiv.innerHTML);
 
         dragg();
         changeInputs();
@@ -140,7 +154,7 @@ function loadFile(event) {
     localStorage.setItem("newImage1", bgImage);
     // output.style.backgroundImage = `url('./images/${fileName}')`; 
     output.style.backgroundImage = `url('${bgImage}')`;
-    setTimeout(() => localStorage.setItem('myListItems3', document.body.innerHTML), 100)
+    setTimeout(() => localStorage.setItem(current, changeableDiv.innerHTML), 100);
 };
 
 
@@ -150,16 +164,23 @@ function saveToLocalStorage() {
 
     divs.forEach(
         inputElement => inputElement.addEventListener("mouseup", function (e) {
-            setTimeout(() => localStorage.setItem('myListItems3', document.body.innerHTML), 100)
+            setTimeout(() => {
+                localStorage.setItem(current, changeableDiv.innerHTML);
+                localStorage.setItem("constantHeader", constantHeader.innerHTML);
+            }, 100);
         }, false)
     )
 }
 
 // GET LOCAL STORAGE
 function getLocalStorage() {
-    var saved = localStorage.getItem('myListItems3');
+    let saved = localStorage.getItem(current);
+    let saved2 = localStorage.getItem("constantHeader");
     if (saved) {
-        document.body.innerHTML = localStorage.getItem('myListItems3');;
+        changeableDiv.innerHTML = localStorage.getItem(current);
+    }
+    if (saved2) {
+        constantHeader.innerHTML = localStorage.getItem("constantHeader");
     }
 }
 
@@ -168,6 +189,9 @@ getLocalStorage();
 // CLEAR LOCAL STORAGE
 const clearLs = document.querySelector("#deleteLs");
 clearLs.onclick = function () {
+    if (localStorage.getItem(current) != null) {
+        localStorage.removeItem(current);
+    }
     localStorage.clear();
     location.reload();
 }
@@ -178,9 +202,12 @@ function addRemoveEvent() {
 
     function removePrentPage() {
         this.parentElement.remove();
+        setTimeout(() => {
+            localStorage.setItem(current, changeableDiv.innerHTML);
+            localStorage.setItem("constantHeader", constantHeader.innerHTML);
+        }, 100);
     }
 }
-
 
 dragg();
 changeInputs();
@@ -212,18 +239,104 @@ jQuery(document).ready(function ($) {
         `);
 
             addRemoveEvent();
-            addingLlists.style.height = document.body.clientHeight + "px";
+            addingLlists.style.height = changeableDiv.clientHeight + "px";
         };
 
         reader.readAsDataURL(this.files[0]);
         event.target.value = "";
 
         setTimeout(() => {
-            localStorage.setItem('myListItems3', document.body.innerHTML);
+            localStorage.setItem(current, changeableDiv.innerHTML);
+            localStorage.setItem("constantHeader", constantHeader.innerHTML);
         }, 100);
     });
 });
 
+
+const addNewProj = document.querySelector("#addNewProj");
+const nameDiv = document.querySelector(".nameDiv");
+const projects = document.querySelector("#projects");
+const savedProj = document.querySelectorAll("#projects button");
+const openSaved = document.querySelectorAll(".openSaved");
+const addProjName = document.querySelector(".addProjName");
+const selcetSaved = document.querySelector("select");
+
+if (savedProj.length == 0) {
+    // nameDiv.classList.add("dflex");
+    nameDiv.classList.add("dflex");
+    nameDiv.classList.remove("dnone"); 
+}
+
+addNewProj.addEventListener("click", addNewProjFun);
+startFirst.addEventListener("click", addNewProjFun);
+openSaved.forEach(el => el.addEventListener("click", openSavedProject));
+
+let currUrl = "";
+
+function openSavedProject(event) {
+    const urlString = window.location.href;
+    const currUrl = urlString.substring(0, urlString.indexOf("#"));
+    
+    setTimeout(() => {
+        projects.classList.toggle("activeDrop");
+        if (event.target.classList.contains("openSaved--start")) {
+            nameDiv.classList.add("dnone");
+            nameDiv.classList.remove("dflex");
+            location.replace(`${urlString}#${this.previousElementSibling.value}`);
+        } else {
+            window.open(`${currUrl}#${event.target.previousElementSibling.innerHTML}`);
+        }  
+    }, 100);
+}
+
+function addNewProjFun() {
+    if (this.previousElementSibling.value.length > 0) {
+        projects.innerHTML += `
+        <li>
+            <p>${this.previousElementSibling.value}</p>
+            <button class="openSaved" onclick="openSavedProject(event)">
+                open
+            </button>
+            <span>
+                remove
+            </span>
+        </li>
+        `;
+
+        selcetSaved.innerHTML += `
+        <option>
+           ${this.previousElementSibling.value}</p>
+        </option>
+        `;
+        
+        // projects.lastElementChild.firstElementChild.innerHTML = this.previousElementSibling.value;
+        
+        setTimeout(() => {
+            localStorage.setItem(current, changeableDiv.innerHTML);
+            localStorage.setItem("constantHeader", constantHeader.innerHTML);
+        }, 100);
+       
+        current = location.href;
+        nameDiv.classList.add("dnone");
+        nameDiv.classList.remove("dflex");
+        projects.classList.remove("activeDrop");
+    }
+
+    if (this.classList.contains("startFirst")) {
+        setTimeout(() => {
+            location.replace(`#${this.previousElementSibling.value}`);
+        }, 100);
+        // window.close('', '_parent', '')
+    } else {
+        setTimeout(() => {
+            window.open(`#${this.previousElementSibling.value}`);
+        }, 100);
+    }
+}
+
+openProjList.onclick = function () {
+    projects.classList.toggle("activeDrop");
+}
 
 
 

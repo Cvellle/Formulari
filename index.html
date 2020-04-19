@@ -11,30 +11,65 @@
       href="https://fonts.googleapis.com/css?family=Roboto:300,400,700"
       rel="stylesheet"
       type="text/css"
-	/>
+    />
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   </head>
 
   <body>
+    <div class="constantDiv">
+      <button id="deleteLs" class="deleteLs">Clear</button>
+      <button id="printButton">Print</button>
+      <button class="addInputs">Add inputs</button>
 
-    <button id="deleteLs" class="deleteLs">Clear</button>
-	<button id="printButton">Print</button>
-	<button class="addInputs">Add inputs</button>
+      <div class="nameDiv dnone">
+        <div class="startFirstDiv">
+          <input
+            type="text"
+            class="projectName"
+            placeholder="New project name"
+          />
+          <button class="startFirst">Start</button>
+        </div>
+        <!-- <div class="openSavedDiv">
+          <select value="Saved project name">
+            <option value="" hidden selected>Open saved project</option>
+          </select>
+          <button class="openSaved openSaved--start">Open</button>
+        </div> -->
+      </div>
+      <div class="projectsDiv">
+        <button id="openProjList" class="openProjList">Open project</button>
+        <input
+          type="text"
+          name=""
+          id="startName"
+          class="startName"
+          placeholder="New project name"
+        />
+        <button id="addNewProj">+</button>
+        <ol id="projects" class="projects"></ol>
+      </div>
+    </div>
 
-    <div class="listDiv">
-      <ul class="myList" id="myList"></ul>
-	</div>
-	
-	<input type="file" class="fileuploader"
-		style="display: none;"
-		accept="image/jpeg,image/gif,image/png,application/pdf,image/x-eps"/>
-    <button class="fileuploader-btn">Add new page</button>
+    <div class="changeableDiv">
+      <div class="listDiv">
+        <ul class="myList" id="myList"></ul>
+      </div>
 
-    <div class="pages" id="pages">
-      <section class="page1">
-        <button class="removePage">x</button>
-      </section>
+      <input
+        type="file"
+        class="fileuploader"
+        style="display: none;"
+        accept="image/jpeg,image/gif,image/png,application/pdf,image/x-eps"
+      />
+      <button class="fileuploader-btn">Add new page</button>
+
+      <div class="pages" id="pages">
+        <section class="page1">
+          <button class="removePage">x</button>
+        </section>
+      </div>
     </div>
 
     <script src="js/scripts.js"></script>

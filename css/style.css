@@ -27,10 +27,12 @@ header {
 	border-radius: 0 0 2vw 0;
 	display: none;
 }
+
 .listDiv {
 	display: flex;
 	justify-content: center;
 }
+
 button, a {
 	border: 0;
 	cursor: pointer;
@@ -43,8 +45,15 @@ button:active {
 	transform: translate(1px, 1px);
 }
 
-button:focus {
+button:focus, select:focus, input:focus {
 	outline: 0;
+}
+
+option {
+	border: 0 !important;
+	padding: 0;
+	outline: 0 !important;
+	background-color: white;
 }
 
 button:hover {
@@ -54,6 +63,7 @@ button:hover {
 }
 
 .deleteLs {
+	display: none;
 	position: fixed;
 	top:1vw;
 	left:1vw;
@@ -76,7 +86,7 @@ button:hover {
 	width: 10vw;
 	background-color: rgba(230, 173, 50, 0.801);
 	border-radius: 1.8vw;
-	left:7vw;
+	left:6.5vw;
 	top:1vw;
 	color:rgba(255, 255, 255, 0.815);
 	font-size:1.2vw;
@@ -141,7 +151,7 @@ button:hover {
 	transition: 2s;
 }
 
-ul {
+#myList {
 	position: absolute;
 	display: flex;
 	align-self: center;
@@ -159,6 +169,126 @@ ul {
 	min-width: 1119px;
 	min-height: 1577.79px;
 	max-width: 1119px;
+}
+
+.projectsDiv {
+	position: fixed;
+	left:18vw;
+	top:1vw;
+	z-index: 14;
+}
+
+#openProjList {	
+	height: 3vw;
+	width: 10vw;
+	border-radius: 1.3vw;
+	font-size:1.2vw;
+	font-weight: 700;
+	cursor: pointer;
+	margin-right: 1vw;
+}
+
+.startName {
+	width:15vw;
+}
+
+#addNewProj {
+	height: 3vw;
+	width: 3vw;
+	background: rgba(160, 160, 160, 0.699);
+	color: rgba(228, 226, 226, 0.863);
+	border: 0.3vw solid rgba(228, 226, 226, 0.863);
+	display: inline-flex;
+	justify-content: center;
+	align-items: center;
+	font-weight: 600;
+	border-radius: 50%;
+	cursor: pointer;
+	z-index: 5;
+	font-size: 1.5vw;
+}
+
+#projects {
+	position: relative;
+	font-size:1.2vw;
+	font-weight: 700;
+	cursor: pointer;
+	z-index: 14;
+	display: none;
+}
+
+.nameDiv {
+	justify-content: center;
+	align-items: center;
+	position: absolute;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	width: 100%;
+	height:100vh;
+	z-index: 20;
+	background-color: rgba(230, 173, 50, 0.836);
+}
+
+.startFirstDiv {
+	width: 30%;
+	height:3vw;
+	display: flex;
+	margin: 2vw;
+}
+
+.openSavedDiv {
+	width: 30%;
+	height:3vw;
+	display: flex;
+	margin: 2vw;
+}
+
+.projectName {
+	height: 100%;
+	flex:7 1 0;
+	border-radius: 1.3vw 0 0 1.3vw;
+	transform: 0.3s;
+	filter: brightness(0.97);
+	padding-left: 1vw;
+	font-size: 1.4vw;
+	border: 0;
+}
+
+.projectName + button {
+	height: 100%;
+	flex:3 1 0;
+	background-color: rgba(255, 225, 53, 0.877);
+	border-radius: 0 1.3vw 1.3vw 0;
+	font-size: 1.4vw;
+	font-weight: 700;
+}
+
+.openSavedDiv select {
+	height: 100%;
+	flex:7 1 0;
+	padding-left: 1vw;
+	font-size: 1.4vw;
+	border-radius: 1.3vw 0 0 1.3vw;
+	border: 0;
+}
+
+.openSavedDiv button {
+	height: 100%;
+	flex:3 1 0;
+	border-radius: 0 1.3vw 1.3vw 0;
+	border: 0;
+	font-size: 1.4vw;
+	font-weight: 700;
+	background-color: rgb(202, 202, 202);
+}
+
+.scrollable {
+	overflow-y: visible;
+}
+
+.projectName:hover {
+	transform: 0.3s;
+	filter: brightness(1);
 }
 
 .draggableDiv {
@@ -347,6 +477,54 @@ section p {
 	background: url("../images/Formular-1.png");
 	background-size: cover !important;
 	background-repeat: no-repeat !important;
+}
+
+.projects {
+	padding:1vw;
+	/* display: none; */
+}
+
+.activeDrop {
+	display: block !important;
+}
+
+.dnone {
+	display: none;
+}
+
+.dflex {
+	display: flex;
+}
+
+.projects p {
+	width: 8vw;
+	display: inline-block;
+	background-color: rgb(109, 109, 109);
+	color: white;
+	padding: 0.3vw 1vw;
+	border-radius: 0.5vw;
+	cursor: initial;
+}
+
+.projects > * {
+	margin-top: 1vw;
+	font-size: 1.2vw;
+	font-weight: normal;
+}
+
+.projects button, .projects span {
+	color: white;
+	padding: 0.3vw 1vw;
+	border-radius: 0.5vw;
+	font-size: 1.2vw;
+	background-color: rgb(197, 197, 197);
+}
+
+.startName {
+	border: 0.2vw solid black;
+	padding: 0.6vw;
+	font-size: 1.2vw;
+	border-radius: 0.5vw;
 }
 
 
