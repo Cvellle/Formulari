@@ -338,6 +338,11 @@ function deleteProject(event) {
     } else {
         localStorage.removeItem(`${urlString}`);    
     }
+
+    setTimeout(() => {
+        localStorage.setItem(current, changeableDiv.innerHTML);
+        localStorage.setItem("constantHeader", constantHeader.innerHTML);
+    }, 100);
 }
 
 openProjList.onclick = function () {
