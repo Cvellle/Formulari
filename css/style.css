@@ -212,7 +212,6 @@ button:hover {
 	position: relative;
 	font-size:1.2vw;
 	font-weight: 700;
-	cursor: pointer;
 	z-index: 14;
 	display: none;
 }
@@ -241,6 +240,7 @@ button:hover {
 	height:3vw;
 	display: flex;
 	margin: 2vw;
+	display: none;
 }
 
 .projectName {
@@ -496,6 +496,22 @@ section p {
 	display: flex;
 }
 
+ol {
+	list-style: none;
+	counter-reset: my-awesome-counter;
+}
+
+ol li {
+	counter-increment: my-awesome-counter;
+}
+
+ol li::before {
+	margin-top: 1vw;
+	content: counter(my-awesome-counter) ". ";
+	color: rgb(83, 82, 82);
+	font-weight: bold;
+}
+
 .projects p {
 	width: 8vw;
 	display: inline-block;
@@ -504,6 +520,7 @@ section p {
 	padding: 0.3vw 1vw;
 	border-radius: 0.5vw;
 	cursor: initial;
+	font-weight: 700;
 }
 
 .projects > * {
@@ -512,12 +529,30 @@ section p {
 	font-weight: normal;
 }
 
-.projects button, .projects span {
+.projects button {
 	color: white;
 	padding: 0.3vw 1vw;
 	border-radius: 0.5vw;
 	font-size: 1.2vw;
 	background-color: rgb(197, 197, 197);
+	font-weight: 700;
+}
+
+.projects span {
+	margin-left: 1.5vw;
+	background-color: rgb(238, 238, 238);
+	color: rgba(0, 0, 0, 0.918);
+	border-radius: 50%;
+	width: 2vw;
+	height: 2vw;
+	padding: 0;
+	font-size: 1.2vw;
+	font-weight: 900;
+	display: inline-flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	cursor: pointer;
 }
 
 .startName {

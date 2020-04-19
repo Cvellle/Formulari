@@ -261,7 +261,8 @@ const openSaved = document.querySelectorAll(".openSaved");
 const addProjName = document.querySelector(".addProjName");
 const selcetSaved = document.querySelector("select");
 
-if (savedProj.length == 0) {
+// if (savedProj.length == 0 || !location.href.includes("#")) {
+if (savedProj.length == 0 ) {
     // nameDiv.classList.add("dflex");
     nameDiv.classList.add("dflex");
     nameDiv.classList.remove("dnone"); 
@@ -271,12 +272,10 @@ addNewProj.addEventListener("click", addNewProjFun);
 startFirst.addEventListener("click", addNewProjFun);
 openSaved.forEach(el => el.addEventListener("click", openSavedProject));
 
-let currUrl = "";
+const urlString = window.location.href;
+const currUrl = urlString.substring(0, urlString.indexOf("#"));
 
-function openSavedProject(event) {
-    const urlString = window.location.href;
-    const currUrl = urlString.substring(0, urlString.indexOf("#"));
-    
+function openSavedProject(event) {  
     setTimeout(() => {
         projects.classList.toggle("activeDrop");
         if (event.target.classList.contains("openSaved--start")) {
@@ -297,8 +296,8 @@ function addNewProjFun() {
             <button class="openSaved" onclick="openSavedProject(event)">
                 open
             </button>
-            <span>
-                remove
+            <span onclick="deleteProject(event)">
+                x
             </span>
         </li>
         `;
@@ -308,8 +307,6 @@ function addNewProjFun() {
            ${this.previousElementSibling.value}</p>
         </option>
         `;
-        
-        // projects.lastElementChild.firstElementChild.innerHTML = this.previousElementSibling.value;
         
         setTimeout(() => {
             localStorage.setItem(current, changeableDiv.innerHTML);
@@ -324,13 +321,22 @@ function addNewProjFun() {
 
     if (this.classList.contains("startFirst")) {
         setTimeout(() => {
-            location.replace(`#${this.previousElementSibling.value}`);
+            location.replace(`${urlString}#${this.previousElementSibling.value}`);
         }, 100);
         // window.close('', '_parent', '')
     } else {
         setTimeout(() => {
-            window.open(`#${this.previousElementSibling.value}`);
+            window.open(`${urlString}#${this.previousElementSibling.value}`);
         }, 100);
+    }
+}
+
+function deleteProject(event) {
+    event.target.parentNode.remove();
+    if (urlString.includes("#")) {
+        localStorage.removeItem(`${currUrl}#${event.target.previousElementSibling.previousElementSibling.innerHTML}`); 
+    } else {
+        localStorage.removeItem(`${urlString}`);    
     }
 }
 
