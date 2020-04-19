@@ -262,11 +262,11 @@ const addProjName = document.querySelector(".addProjName");
 const selcetSaved = document.querySelector("select");
 
 // if (savedProj.length == 0 || !location.href.includes("#")) {
-if (savedProj.length == 0 ) {
-    // nameDiv.classList.add("dflex");
-    nameDiv.classList.add("dflex");
-    nameDiv.classList.remove("dnone"); 
-}
+// if (savedProj.length == 0 ) {
+//     // nameDiv.classList.add("dflex");
+//     // nameDiv.classList.add("dflex");
+//     // nameDiv.classList.remove("dnone"); 
+// }
 
 addNewProj.addEventListener("click", addNewProjFun);
 startFirst.addEventListener("click", addNewProjFun);
@@ -339,10 +339,10 @@ function deleteProject(event) {
         localStorage.removeItem(`${urlString}`);    
     }
 
-    setTimeout(() => {
-        localStorage.setItem(current, changeableDiv.innerHTML);
-        localStorage.setItem("constantHeader", constantHeader.innerHTML);
-    }, 100);
+     setTimeout(() => {
+            localStorage.setItem(current, changeableDiv.innerHTML);
+            localStorage.setItem("constantHeader", constantHeader.innerHTML);
+        }, 100);
 }
 
 openProjList.onclick = function () {
