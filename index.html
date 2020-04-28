@@ -1,76 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=9" />
-    <title>Formulari - Micko</title>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="css/style.css" media="screen" />
-    <link rel="stylesheet" media="print" href="css/style.css" />
-    <link
-      href="https://fonts.googleapis.com/css?family=Roboto:300,400,700"
-      rel="stylesheet"
-      type="text/css"
-    />
-    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-  </head>
 
-  <body>
-    <div class="constantDiv">
-      <button id="deleteLs" class="deleteLs">Clear</button>
-      <button id="printButton">Print</button>
-      <button class="addInputs">Add inputs</button>
+<head>
+  <meta http-equiv="X-UA-Compatible" content="IE=9" />
+  <title>Formulari - Micko</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="css/style.css" media="screen" />
+  <link rel="stylesheet" media="print" href="css/style.css" />
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700" rel="stylesheet" type="text/css" />
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+</head>
 
-      <div class="nameDiv dnone">
-        <div class="startFirstDiv">
-          <input
-            type="text"
-            class="projectName"
-            placeholder="New project name"
-          />
-          <button class="startFirst">Start</button>
-        </div>
-        <div class="openSavedDiv">
-          <select value="Saved project name">
-          </select>
-          <button class="openSaved openSaved--start">Open</button>
-        </div>
+<body>
+  <div class="constantDiv">
+    <button id="deleteLs" class="deleteLs">Clear</button>
+    <button id="printButton">Print</button>
+    <button class="addInputs">Add inputs</button>
+
+    <div class="nameDiv dnone">
+      <div class="startFirstDiv">
+        <input type="text" class="projectName" placeholder="New project name" />
+        <button class="startFirst">Start</button>
       </div>
-      <div class="projectsDiv">
-        <button id="openProjList" class="openProjList">Open project</button>
-        <input
-          type="text"
-          name=""
-          id="startName"
-          class="startName"
-          placeholder="New project name"
-        />
-        <button id="addNewProj">+</button>
-        <ol id="projects" class="projects"></ol>
+      <div class="openSavedDiv">
+        <select value="Saved project name">
+        </select>
+        <button class="openSaved openSaved--start">Open</button>
       </div>
     </div>
+    <div class="projectsDiv">
+      <button id="openProjList" class="openProjList">Open project</button>
+      <input type="text" name="" id="startName" class="startName" placeholder="New project name" />
+      <button id="addNewProj">+</button>
+      <ol id="projects" class="projects"></ol>
+    </div>
+  </div>
 
-    <div class="changeableDiv">
-      <div class="listDiv">
-        <ul class="myList" id="myList"></ul>
-      </div>
-
-      <input
-        type="file"
-        class="fileuploader"
-        style="display: none;"
-        accept="image/jpeg,image/gif,image/png,application/pdf,image/x-eps"
-      />
-      <button class="fileuploader-btn">Add new page</button>
-
-      <div class="pages" id="pages">
-        <section class="page1">
-          <button class="removePage">x</button>
-        </section>
-      </div>
+  <div class="changeableDiv">
+    <div class="listDiv">
+      <ul class="myList" id="myList"></ul>
     </div>
 
-    <script src="js/scripts.js"></script>
-  </body>
+    <input type="file" class="fileuploader" style="display: none;"
+      accept="image/jpeg,image/gif,image/png,application/pdf,image/x-eps" />
+    <button class="fileuploader-btn">Add new page</button>
+
+    <div class="pages" id="pages">
+      <section class="page1">
+        <button class="removePage">x</button>
+      </section>
+    </div>
+  </div>
+
+  <script src="js/changeInputValues.js"></script>
+  <script src="js/scripts.js"></script>
+  <script src="js/addAndDelete.js"></script>
+  <script src="js/openFile.js"></script>
+</body>
+
 </html>

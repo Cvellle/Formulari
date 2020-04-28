@@ -1,0 +1,33 @@
+
+// const drD = document.querySelectorAll(".myList");
+// drD.forEach(
+//     inputElement => inputElement.addEventListener("DOMNodeInserted", function (e) {
+//         alert("a");
+//     }, false)
+// )
+
+
+// if (window.styleMedia.type == "screen") {
+// }
+
+
+// window.close('', '_parent', '')
+
+
+// // OPEN FILE -- old version
+// const acceptInput = document.querySelectorAll('.fileInp');
+// acceptInput.forEach(element => {
+//     element.addEventListener("change", loadFile)
+// });
+
+
+// function loadFile(event) {
+//     let bgImage = URL.createObjectURL(event.target.files[0]);
+//     let output = event.target.parentNode;
+//     let file = event.target.value.split("\\");
+//     let fileName = file[file.length - 1];
+//     localStorage.setItem("newImage1", bgImage);
+//     // output.style.backgroundImage = `url('./images/${fileName}')`; 
+//     output.style.backgroundImage = `url('${bgImage}')`;
+//     setTimeout(() => localStorage.setItem(current, changeableDiv.innerHTML), 100);
+// };

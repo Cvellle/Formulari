@@ -3,7 +3,6 @@ const constantHeader = document.querySelector(".constantDiv");
 const changeableDiv = document.querySelector(".changeableDiv");
 const projItem = document.querySelector(".projects > *");
 const startFirst = document.querySelector(".startFirst");
-
 let savedLocalSorages = ["myListItems1"];
 let projNames = [];
 current = location.href;
@@ -21,13 +20,10 @@ const dragg = function () {
 
 // DELETE DIV
 const deleteSelf = function () {
-
     const divs = document.querySelectorAll(".draggableDiv");
-
     divs.forEach(element => {
         element.addEventListener("mouseover", allowDel)
     });
-
     const deleteDiv = document.querySelectorAll('.myList button');
 
     function allowDel() {
@@ -64,44 +60,7 @@ const fixDiv = function () {
     )
 }
 
-//  INPUT VALUES
-const changeInputs = function () {
-    "keyup change".split(" ").forEach(evt => {
-        const newInputs = document.querySelectorAll(".newInput + input");
-        const nameInputs = document.querySelectorAll(".areaName + input");
-        const rangeInputs = document.querySelectorAll('.myList input[type="range"]');
-
-        nameInputs.forEach(
-            inputElement => inputElement.addEventListener(evt, function (e) {
-                this.previousElementSibling.innerHTML = this.value;
-                this.previousElementSibling.previousElementSibling.previousElementSibling.className = this.previousElementSibling.innerHTML + " newInput";
-                //auto set date
-                const date = new Date();
-                if (this.value == "date") {
-                    this.previousElementSibling.previousElementSibling.previousElementSibling.innerHTML = `${date.getDate()}.${date.getMonth() + 1}.${date.getFullYear()}.`;
-                }
-            }, false)
-        )
-
-        newInputs.forEach(
-            inputElement => inputElement.addEventListener(evt, function (e) {
-                this.previousElementSibling.innerHTML = this.value;
-                var sameElements = document.querySelectorAll("." + this.nextElementSibling.innerHTML);
-                sameElements.forEach(textElement => {
-                    textElement.innerHTML = e.target.value;
-                });
-            }, false)
-        )
-
-        rangeInputs.forEach(inp => inp.addEventListener("mousemove", function () {
-            this.nextElementSibling.style.fontSize = this.value * 0.3 + "px";
-        }));
-
-    });
-}
-
 function all() {
-
     // PRINT WINDOW
     const printButton = document.querySelector('#printButton');
     printButton.onclick = function (e) {
@@ -132,12 +91,10 @@ function all() {
         deleteSelf();
         fixDiv();
         saveToLocalStorage();
-
     }
 
     const appendInupts = document.querySelectorAll('.addInputs');
     appendInupts.forEach(el => el.addEventListener("click", appendInupt)) = appendInupt;
-
 }
 
 // OPEN FILE
@@ -152,11 +109,9 @@ function loadFile(event) {
     let file = event.target.value.split("\\");
     let fileName = file[file.length - 1];
     localStorage.setItem("newImage1", bgImage);
-    // output.style.backgroundImage = `url('./images/${fileName}')`; 
     output.style.backgroundImage = `url('${bgImage}')`;
     setTimeout(() => localStorage.setItem(current, changeableDiv.innerHTML), 100);
 };
-
 
 // SAVE TO LOCAL STORAGE
 function saveToLocalStorage() {
@@ -219,148 +174,3 @@ addRemoveEvent();
 window.addEventListener("load", all);
 
 
-// Jquery
-
-jQuery(document).ready(function ($) {
-
-    $(".fileuploader-btn").on("click", function () {
-        $(".fileuploader").click();
-    });
-
-    $(".fileuploader").change(function (event) {
-        var reader = new FileReader();
-        reader.onload = function (file) {
-            var fileContent = file.target.result;
-
-            $("#pages").append(`
-            <section class="newDiv" style="background:url('${fileContent}')">
-                <button class="removePage">x</button>
-            </section>
-        `);
-
-            addRemoveEvent();
-            addingLlists.style.height = changeableDiv.clientHeight + "px";
-        };
-
-        reader.readAsDataURL(this.files[0]);
-        event.target.value = "";
-
-        setTimeout(() => {
-            localStorage.setItem(current, changeableDiv.innerHTML);
-            localStorage.setItem("constantHeader", constantHeader.innerHTML);
-        }, 100);
-    });
-});
-
-
-const addNewProj = document.querySelector("#addNewProj");
-const nameDiv = document.querySelector(".nameDiv");
-const projects = document.querySelector("#projects");
-const savedProj = document.querySelectorAll("#projects button");
-const openSaved = document.querySelectorAll(".openSaved");
-const addProjName = document.querySelector(".addProjName");
-const selcetSaved = document.querySelector("select");
-
-// if (savedProj.length == 0 || !location.href.includes("#")) {
-// if (savedProj.length == 0 ) {
-//     // nameDiv.classList.add("dflex");
-//     // nameDiv.classList.add("dflex");
-//     // nameDiv.classList.remove("dnone"); 
-// }
-
-addNewProj.addEventListener("click", addNewProjFun);
-startFirst.addEventListener("click", addNewProjFun);
-openSaved.forEach(el => el.addEventListener("click", openSavedProject));
-
-const urlString = window.location.href;
-const currUrl = urlString.substring(0, urlString.indexOf("#"));
-
-function openSavedProject(event) {  
-    setTimeout(() => {
-        projects.classList.toggle("activeDrop");
-        if (event.target.classList.contains("openSaved--start")) {
-            nameDiv.classList.add("dnone");
-            nameDiv.classList.remove("dflex");
-            location.replace(`${urlString}#${this.previousElementSibling.value}`);
-        } else {
-            window.open(`${currUrl}#${event.target.previousElementSibling.innerHTML}`);
-        }  
-    }, 100);
-}
-
-function addNewProjFun() {
-    if (this.previousElementSibling.value.length > 0) {
-        projects.innerHTML += `
-        <li>
-            <p>${this.previousElementSibling.value}</p>
-            <button class="openSaved" onclick="openSavedProject(event)">
-                open
-            </button>
-            <span onclick="deleteProject(event)">
-                x
-            </span>
-        </li>
-        `;
-
-        selcetSaved.innerHTML += `
-        <option>
-           ${this.previousElementSibling.value}</p>
-        </option>
-        `;
-        
-        setTimeout(() => {
-            localStorage.setItem(current, changeableDiv.innerHTML);
-            localStorage.setItem("constantHeader", constantHeader.innerHTML);
-        }, 100);
-       
-        current = location.href;
-        nameDiv.classList.add("dnone");
-        nameDiv.classList.remove("dflex");
-        projects.classList.remove("activeDrop");
-    }
-
-    if (this.classList.contains("startFirst")) {
-        setTimeout(() => {
-            location.replace(`#${this.previousElementSibling.value}`);
-        }, 100);
-        // window.close('', '_parent', '')
-    } else {
-        setTimeout(() => {
-            window.open(`#${this.previousElementSibling.value}`);
-        }, 100);
-    }
-}
-
-function deleteProject(event) {
-    event.target.parentNode.remove();
-    if (urlString.includes("#")) {
-        localStorage.removeItem(`${currUrl}#${event.target.previousElementSibling.previousElementSibling.innerHTML}`); 
-    } else {
-        localStorage.removeItem(`${urlString}`);    
-    }
-
-     setTimeout(() => {
-            localStorage.setItem(current, changeableDiv.innerHTML);
-            localStorage.setItem("constantHeader", constantHeader.innerHTML);
-        }, 100);
-}
-
-openProjList.onclick = function () {
-    projects.classList.toggle("activeDrop");
-}
-
-
-
-
-
-
-// const drD = document.querySelectorAll(".myList");
-// drD.forEach(
-//     inputElement => inputElement.addEventListener("DOMNodeInserted", function (e) {
-//         alert("a");
-//     }, false)
-// )
-
-// if (window.styleMedia.type == "screen") {
-
-// }
